@@ -22,3 +22,4 @@ add_executable(kokkos_math_registers main.cpp)
 
 target_link_libraries(kokkos_math_registers Kokkos::kokkos)
 target_compile_options(kokkos_math_registers PRIVATE -Wall -Wextra -Wpedantic -lineinfo --resource-usage)
+#target_compile_options(kokkos_math_registers PRIVATE -Wall -Wextra -Wpedantic -Rpass-analysis=kernel-resource-usage)
