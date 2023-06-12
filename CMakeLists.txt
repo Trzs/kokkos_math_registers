@@ -8,6 +8,14 @@ project(kokkos_math_registers)
 SET(CMAKE_CXX_STANDARD 17)
 SET(CMAKE_CXX_EXTENSIONS OFF)
 
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
+set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
 include(FetchContent)
 FetchContent_Declare(
   kokkos
@@ -21,5 +29,5 @@ FetchContent_MakeAvailable(kokkos)
 add_executable(kokkos_math_registers main.cpp)
 
 target_link_libraries(kokkos_math_registers Kokkos::kokkos)
-target_compile_options(kokkos_math_registers PRIVATE -Wall -Wextra -Wpedantic -lineinfo --resource-usage)
-#target_compile_options(kokkos_math_registers PRIVATE -Wall -Wextra -Wpedantic -Rpass-analysis=kernel-resource-usage)
+target_compile_options(kokkos_math_registers PRIVATE -Wpedantic -lineinfo --resource-usage)
+#target_compile_options(kokkos_math_registers PRIVATE -Wpedantic -Rpass-analysis=kernel-resource-usage)
